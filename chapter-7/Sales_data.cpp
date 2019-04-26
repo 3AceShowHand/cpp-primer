@@ -38,3 +38,11 @@ std::istream &read(std::istream & is, Sales_data & data) {
 	
 	return is;
 }
+
+Sales_data &Sales_data::operator=(const Sales_data &rhs) {
+    this->bookNo = rhs.bookNo;
+    this->units_sold = rhs.units_sold;
+    this->revenue = rhs.revenue;
+
+    return *this;
+}

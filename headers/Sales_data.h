@@ -27,7 +27,11 @@ public:
 	Sales_data(): Sales_data("", 0, 0) {
 		std::cout << "Sales_data()" << std::endl;
 	}
-	
+
+	Sales_data(const Sales_data& s):Sales_data(s.bookNo, s.units_sold, s.revenue) {
+	    std::cout << "Sales_data(const Sales_data& s)" << std::endl;
+	}
+
 	explicit Sales_data(const std::string& s): Sales_data(s, 0, 0) {
 		std::cout << "explicit Sales_data(const std::string& s)" << std::endl;
 	}
@@ -41,6 +45,8 @@ public:
 		std::cout << "explicit Sales_data(std::istream& is)" << std::endl;
 		read(is, *this);
 	}
+
+	Sales_data& operator=(const Sales_data& rhs);
 	
 	std::string isbn() const {
 		return bookNo;
