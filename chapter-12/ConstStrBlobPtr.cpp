@@ -45,21 +45,21 @@ ConstStrBlobPtr &ConstStrBlobPtr::incr() {
 bool ConstStrBlobPtr::operator!=(const ConstStrBlobPtr &p) {
     return p.curr != curr;
 }
-
-int main() {
-    StrBlob sb;
-    ifstream ifs("../data/line.txt");
-
-    if (ifs) {
-        string word;
-        while (ifs >> word) {
-            sb.push_back(word);
-        }
-    }
-
-    for (auto pbeg(sb.const_begin()), pend(sb.const_end()); pbeg != pend; pbeg.incr()) {
-        std::cout << pbeg.deref() << std::endl;
-    }
-
-    return 0;
-}
+//
+//int main() {
+//    StrBlob sb;
+//    ifstream ifs("../data/line.txt");
+//
+//    if (ifs) {
+//        string word;
+//        while (ifs >> word) {
+//            sb.push_back(word);
+//        }
+//    }
+//
+//    for (auto pbeg(sb.const_begin()), pend(sb.const_end()); pbeg != pend; pbeg.incr()) {
+//        std::cout << pbeg.deref() << std::endl;
+//    }
+//
+//    return 0;
+//}

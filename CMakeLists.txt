@@ -111,3 +111,5 @@ add_executable(ex12_23_24 chapter-12/ex12_23_24.cpp)
 add_executable(allocator chapter-12/allocator.cpp)
 add_executable(ex12_26 chapter-12/ex12_26.cpp)
 add_executable(TextQueryMain chapter-12/TextQueryMain.cpp chapter-12/TextQuery.cpp chapter-12/QueryResult.cpp)
+add_executable(BlobQueryMain chapter-12/BlobQueryMain.cpp chapter-12/TextBlobQuery.cpp
+        chapter-12/BlobQueryResult.cpp chapter-12/ConstStrBlobPtr.cpp chapter-12/StrBlob.cpp chapter-12/StrBlobPtr.cpp)
