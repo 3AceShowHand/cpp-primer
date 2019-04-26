@@ -8,6 +8,7 @@ class StrBlob;
 #include <memory>
 
 class StrBlobPtr {
+
 public:
     typedef std::vector<std::string>::size_type size_type;
 

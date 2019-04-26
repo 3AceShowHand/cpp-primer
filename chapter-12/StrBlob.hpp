@@ -14,15 +14,14 @@ class StrBlobPtr;
 class ConstStrBlobPtr;
 
 class StrBlob {
-
     friend class StrBlobPtr;
     friend class ConstStrBlobPtr;
 
 public:
-
     typedef std::vector<std::string>::size_type size_type;
 
     StrBlob();
+    StrBlob(const StrBlob& b);
     StrBlob(std::initializer_list<std::string> il);
 
     size_type size() const { return data->size(); }
@@ -42,11 +41,10 @@ public:
     ConstStrBlobPtr const_begin() const;
     ConstStrBlobPtr const_end() const;
 
-
 private:
     std::shared_ptr<std::vector<std::string>> data;
-
     void check(size_type pos, const std::string &msg) const;
+
 };
 
 #endif //CPP_PRIMER_STRBLOB_HPP

@@ -2,9 +2,13 @@
 #include "StrBlob.hpp"
 
 
-StrBlobPtr::StrBlobPtr() : wptr(), curr(0) {}
-StrBlobPtr::StrBlobPtr(StrBlob &sb, size_type pos)
-        : wptr(sb.data), curr(pos) {}
+StrBlobPtr::StrBlobPtr() : wptr(), curr(0) {
+
+}
+
+StrBlobPtr::StrBlobPtr(StrBlob &sb, size_type pos) : wptr(sb.data), curr(pos) {
+
+}
 
 std::shared_ptr<std::vector<std::string>>
 StrBlobPtr::check(size_type pos, const std::string &msg) const {

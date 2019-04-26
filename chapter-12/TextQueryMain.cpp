@@ -6,6 +6,7 @@
 #include <iostream>
 #include "TextQuery.hpp"
 #include "QueryResult.hpp"
+#include "StrBlob.hpp"
 
 using namespace std;
 
@@ -22,5 +23,6 @@ void runQueries(ifstream& infile) {
 int main() {
     ifstream infile("../data/letter.txt");
     runQueries(infile);
+
     return 0;
 }

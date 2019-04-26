@@ -65,3 +65,5 @@ void StrBlob::push_back(const std::string &s) {
     data->push_back(s);
 }
 
+StrBlob::StrBlob(const StrBlob &b): data(b.data) {
+}

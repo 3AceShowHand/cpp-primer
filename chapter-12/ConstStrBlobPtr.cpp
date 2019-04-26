@@ -31,7 +31,6 @@ ConstStrBlobPtr::check(size_type pos, const std::string &msg) const {
     return ret;
 }
 
-
 const std::string &ConstStrBlobPtr::deref() const {
     auto sp = check(curr, "deference past end of ConstStrBlobPtr");
     return (*sp)[curr];

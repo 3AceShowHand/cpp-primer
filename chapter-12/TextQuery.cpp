@@ -9,16 +9,14 @@
 
 using namespace std;
 
-TextQuery::TextQuery(ifstream &infile)
-: lines(new vector<string>)
-{
+TextQuery::TextQuery(std::ifstream &infile):lines(new vector<string>) {
     string text;
     while (getline(infile, text)) {
         lines->push_back(text);
         int n = lines->size() - 1;
         istringstream line(text);
         string word;
-        while (line >> word) {
+        while(line >> word) {
             auto& line_num = records[word];
             if (!line_num) {
                 line_num.reset(new set<line_no>);
@@ -36,4 +34,3 @@ QueryResult TextQuery::query(const std::string &sought) const {
     }
     return QueryResult(sought, loc->second, lines);
 }
-
