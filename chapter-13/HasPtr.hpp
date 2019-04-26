@@ -15,6 +15,8 @@ public:
     HasPtr(const std::string& s = std::string());
     HasPtr(const HasPtr& rhs);
 
+    ~HasPtr();
+
     HasPtr& operator=(const HasPtr& rhs);
 
 private:

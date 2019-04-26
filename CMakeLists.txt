@@ -115,3 +115,4 @@ add_executable(BlobQueryMain chapter-12/BlobQueryMain.cpp chapter-12/TextBlobQue
         chapter-12/BlobQueryResult.cpp chapter-12/ConstStrBlobPtr.cpp chapter-12/StrBlob.cpp chapter-12/StrBlobPtr.cpp)
 add_executable(chapter13-main chapter-13/chapter13-main.cpp)
 add_executable(HasPtrMain chapter-13/HasPtrMain.cpp chapter-13/HasPtr.hpp)
+add_executable(X chapter-13/X.cpp)
