@@ -6,8 +6,12 @@
 
 using namespace std;
 
-int main() {
 
+int main() {
+    HasPtr ptr1;
+    HasPtr ptr2 = ptr1;
+    HasPtr ptr3;
+    ptr3 = ptr1;
 
     return 0;
 }

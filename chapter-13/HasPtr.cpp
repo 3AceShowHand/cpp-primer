@@ -6,23 +6,32 @@
 
 using namespace std;
 
-HasPtr::HasPtr(const string &s) : ps(new std::string(s)), i(0) {
+
+HasPtr::HasPtr(const string &s): ps(new std::string(s)), i(0), use_count(new std::size_t(1)) {
 
 }
 
-HasPtr::HasPtr(const HasPtr &rhs) : ps(new std::string(*rhs.ps)), i(rhs.i) {
-
+HasPtr::HasPtr(const HasPtr &rhs): ps(rhs.ps), i(0), use_count(rhs.use_count) {
+    *use_count += 1;
 }
 
 HasPtr &HasPtr::operator=(const HasPtr &rhs) {
-    auto newps = new std::string(*rhs.ps);
-    delete ps;
-    ps = newps;
+    *rhs.use_count += 1;
+    if (--*use_count == 0) {
+        delete ps;
+        delete use_count;
+    }
+    ps = rhs.ps;
     i = rhs.i;
+    use_count = rhs.use_count;
 
     return *this;
 }
 
 HasPtr::~HasPtr() {
-    delete ps;
+    *use_count -= 1;
+    if (*use_count == 0) {
+        delete ps;
+        delete use_count;
+    }
 }

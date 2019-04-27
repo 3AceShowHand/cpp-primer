@@ -114,5 +114,14 @@ add_executable(TextQueryMain chapter-12/TextQueryMain.cpp chapter-12/TextQuery.c
 add_executable(BlobQueryMain chapter-12/BlobQueryMain.cpp chapter-12/TextBlobQuery.cpp
         chapter-12/BlobQueryResult.cpp chapter-12/ConstStrBlobPtr.cpp chapter-12/StrBlob.cpp chapter-12/StrBlobPtr.cpp)
 add_executable(chapter13-main chapter-13/chapter13-main.cpp)
-add_executable(HasPtrMain chapter-13/HasPtrMain.cpp chapter-13/HasPtr.hpp)
+add_executable(HasPtrMain chapter-13/HasPtrMain.cpp chapter-13/HasPtr.cpp)
 add_executable(X chapter-13/X.cpp)
+add_executable(bulk_item chapter-13/bulk_item.cpp)
+add_executable(numbered chapter-13/numbered.cpp)
+add_executable(Employee_main chapter-13/Employee_main.cpp chapter-13/Employee.cpp)
+
+add_executable(HasPtrMain2 chapter-13/HasPtr_Value/HasPtrMain2.cpp chapter-13/HasPtr_Value/HasPtr.cpp)
+
+add_executable(MessageManagement chapter-13/MessageManagement.cpp chapter-13/Message.cpp chapter-13/Folder.cpp)
+add_executable(StrVecMain chapter-13/StrVecMain.cpp chapter-13/StrVec.cpp)
+add_executable(StringMain chapter-13/String/StringMain.cpp)

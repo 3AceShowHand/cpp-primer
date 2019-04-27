@@ -59,8 +59,10 @@ int main() {
 
     cout << " x3 create " << endl;
     X x3;
-
     x3 = x1;
+
+    cout << " x4 create " << endl;
+    X x4 = x1;
 
     cout << " func1(x1) create " << endl;
     func1(x1);
