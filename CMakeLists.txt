@@ -45,7 +45,6 @@ add_executable(ex6_42 chapter-6/ex6_42.cpp)
 add_executable(ex6_44 chapter-6/ex6_44.cpp)
 add_executable(ex6_51 chapter-6/ex6_51.cpp)
 add_executable(ex6_54_55_56 chapter-6/ex6_54_55_56.cpp)
-add_executable(Sales_data chapter-7/Sales_data.cpp)
 add_executable(Person chapter-7/Person.cpp)
 
 add_executable(ex7_11 chapter-7/ex7_11.cpp chapter-7/Sales_data.cpp)

@@ -70,3 +70,33 @@ String &String::operator=(String&& rhs) noexcept {
     }
     return *this;
 }
+
+std::ostream &operator<<(std::ostream &os, const String &s) {
+    os << s.elements << std::endl;
+    return os;
+}
+
+bool operator==(const String &lhs, const String &rhs) {
+    return  (lhs.size() == rhs.size()) && std::equal(lhs.begin(), lhs.end(), rhs.begin());
+}
+
+bool operator!=(const String &lhs, const String &rhs) {
+    return !(lhs == rhs);
+}
+
+bool operator<(const String &lhs, const String &rhs) {
+    return std::lexicographical_compare(lhs.begin(), lhs.end(), rhs.begin(), rhs.end());
+}
+
+bool operator>(const String &lhs, const String &rhs) {
+    return lhs < lhs;
+}
+
+bool operator<=(const String &lhs, const String &rhs) {
+    return !(lhs > rhs);
+}
+
+bool operator>=(const String &lhs, const String &rhs) {
+    return !(lhs < rhs);
+}
+

@@ -10,17 +10,29 @@
 
 class Sales_data;
 
-Sales_data add(const Sales_data&, const Sales_data&);
+//Sales_data add(const Sales_data&, const Sales_data&);
+//
+//std::ostream& print(std::ostream&, const Sales_data&);
+//
+//std::istream& read(std::istream&, Sales_data&);
 
-std::ostream& print(std::ostream&, const Sales_data&);
 
-std::istream& read(std::istream&, Sales_data&);
+std::ostream& operator<<(std::ostream& os, const Sales_data& item);
+std::istream& operator>>(std::istream& is, Sales_data& item);
+
+Sales_data operator+(const Sales_data& lhs, const Sales_data& rhs);
+bool operator==(const Sales_data& lhs, const Sales_data& rhs);
+bool operator!=(const Sales_data& lhs, const Sales_data& rhs);
 
 class Sales_data {
-	
-	friend Sales_data add(const Sales_data&, const Sales_data&);
-	friend std::ostream& print(std::ostream&, const Sales_data&);
-	friend std::istream& read(std::istream&, Sales_data&);
+
+    friend std::ostream& operator<<(std::ostream& os, const Sales_data& item);
+    friend std::istream& operator>>(std::istream& is, Sales_data& item);
+
+    friend Sales_data operator+(const Sales_data& lhs, const Sales_data& rhs);
+
+    friend bool operator==(const Sales_data& lhs, const Sales_data& rhs);
+    friend bool operator!=(const Sales_data& lhs, const Sales_data& rhs);
 
 public:
 	
@@ -43,7 +55,8 @@ public:
 	
 	explicit Sales_data(std::istream& is): Sales_data() {
 		std::cout << "explicit Sales_data(std::istream& is)" << std::endl;
-		read(is, *this);
+//		read(is, *this);
+        is >> *this;
 	}
 
 	Sales_data& operator=(const Sales_data& rhs);
@@ -53,6 +66,8 @@ public:
 	}
 	
 	Sales_data& combine(const Sales_data&);
+
+    Sales_data& operator+=(const Sales_data& rhs);
 	
 	double avg_price() const;
 

@@ -5,9 +5,22 @@
 #ifndef CPP_PRIMER_STRING_HPP
 #define CPP_PRIMER_STRING_HPP
 
+#include <iostream>
 #include <memory>
 
+
 class String {
+    friend std::ostream& operator<<(std::ostream& os, const String& s);
+
+    friend bool operator==(const String& lhs, const String& rhs);
+    friend bool operator!=(const String& lhs, const String& rhs);
+
+    friend bool operator<(const String& lhs, const String& rhs);
+    friend bool operator>(const String& lhs, const String& rhs);
+
+    friend bool operator<=(const String& lhs, const String& rhs);
+    friend bool operator>=(const String& lhs, const String& rhs);
+
 public:
 
     String():String("") {}
@@ -52,5 +65,10 @@ private:
 
 };
 
+std::ostream& operator<<(std::ostream& os, const String& s);
+
+bool operator==(const String& lhs, const String& rhs);
+bool operator!=(const String& lhs, const String& rhs);
+bool operator<(const String& lhs, const String& rhs);
 
 #endif //CPP_PRIMER_STRING_HPP

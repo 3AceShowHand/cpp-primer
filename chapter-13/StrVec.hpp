@@ -10,6 +10,16 @@
 
 class StrVec {
 
+    friend bool operator==(const StrVec& lhs, const StrVec& rhs);
+    friend bool operator!=(const StrVec& lhs, const StrVec& rhs);
+
+    friend bool operator<(const StrVec& lhs, const StrVec& rhs);
+    friend bool operator>(const StrVec& lhs, const StrVec& rhs);
+
+    friend bool operator<=(const StrVec& lhs, const StrVec& rhs);
+    friend bool operator>=(const StrVec& lhs, const StrVec& rhs);
+
+
 public:
 
     StrVec(): elements(nullptr), first_free(nullptr), cap(nullptr) {
@@ -54,7 +64,6 @@ public:
 
     void shrink_to_fit();
 
-
 private:
 
     std::string* elements;
@@ -74,7 +83,16 @@ private:
     }
 
     void range_initialize(const std::string* begin, const std::string* end);
-
 };
+
+bool operator==(const StrVec& lhs, const StrVec& rhs);
+bool operator!=(const StrVec& lhs, const StrVec& rhs);
+
+bool operator<(const StrVec& lhs, const StrVec& rhs);
+bool operator>(const StrVec& lhs, const StrVec& rhs);
+
+bool operator<=(const StrVec& lhs, const StrVec& rhs);
+bool operator>=(const StrVec& lhs, const StrVec& rhs);
+
 
 #endif //CPP_PRIMER_STRVEC_HPP

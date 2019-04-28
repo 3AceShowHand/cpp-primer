@@ -123,10 +123,6 @@ void StrVec::reserve(int newCapacity) {
         for (size_t i = 0; i != size(); ++i) {
             alloc.construct(dest++, std::move(*elem++));
         }
-//        for_each(dest, dest + size(), [this, &elem] (std::string& s) {
-//            alloc.construct(&s, std::move(*elem++));
-//        });
-
         free();
         elements = newdata;
         first_free = dest;
@@ -172,3 +168,26 @@ StrVec &StrVec::operator=(StrVec &&rhs) noexcept {
     return *this;
 }
 
+bool operator==(const StrVec &lhs, const StrVec &rhs) {
+    return lhs.size() == rhs.size() && std::equal(lhs.begin(), lhs.end(), rhs.begin());
+}
+
+bool operator!=(const StrVec &lhs, const StrVec &rhs) {
+    return !(lhs == rhs);
+}
+
+bool operator<(const StrVec &lhs, const StrVec &rhs) {
+    return std::lexicographical_compare(lhs.begin(), lhs.end(), rhs.begin(), rhs.end());
+}
+
+bool operator>(const StrVec &lhs, const StrVec &rhs) {
+    return rhs < lhs;
+}
+
+bool operator<=(const StrVec &lhs, const StrVec &rhs) {
+    return !(lhs > rhs);
+}
+
+bool operator>=(const StrVec &lhs, const StrVec &rhs) {
+    return !(lhs < rhs);
+}
