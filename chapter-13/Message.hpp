@@ -19,8 +19,11 @@ public:
     }
 
     Message(const Message& m);
-
     Message& operator=(const Message& m);
+
+    Message(Message&& m);
+
+    Message& operator=(Message&& rhs);
 
     ~Message();
 
@@ -42,6 +45,8 @@ private:
 
     void add_to_Folders(const Message& m);
     void remove_from_Folders();
+
+    void move_Folders(Message* m);
 
 };
 

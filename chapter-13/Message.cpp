@@ -61,3 +61,25 @@ void Message::remFolder(Folder* f) {
 void Message::print_debug() {
     std::cout << content << std::endl;
 }
+
+void Message::move_Folders(Message *m) {
+    folders = std::move(m->folders);
+    for (auto f: folders) {
+        f->remMsg(m);
+        f->addMsg(this);
+    }
+    m->folders.clear();
+}
+
+Message &Message::operator=(Message &&rhs) {
+    if (this != &rhs) {
+        remove_from_Folders();
+        content = std::move(rhs.content);
+        move_Folders(&rhs);
+    }
+    return *this;
+}
+
+Message::Message(Message &&m) :content(std::move(m.content)) {
+    move_Folders(&m);
+}

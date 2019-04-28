@@ -124,4 +124,6 @@ add_executable(HasPtrMain2 chapter-13/HasPtr_Value/HasPtrMain2.cpp chapter-13/Ha
 
 add_executable(MessageManagement chapter-13/MessageManagement.cpp chapter-13/Message.cpp chapter-13/Folder.cpp)
 add_executable(StrVecMain chapter-13/StrVecMain.cpp chapter-13/StrVec.cpp)
-add_executable(StringMain chapter-13/String/StringMain.cpp)
+add_executable(StringMain chapter-13/String/StringMain.cpp chapter-13/String/String.cpp)
+add_executable(rvalue chapter-13/rvalue.cpp)
+add_executable(Foo chapter-13/Foo.cpp)

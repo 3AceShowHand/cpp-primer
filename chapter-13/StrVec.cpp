@@ -5,6 +5,7 @@
 
 #include <utility>
 #include <algorithm>
+#include <iostream>
 #include "StrVec.hpp"
 
 using namespace std;
@@ -34,8 +35,18 @@ StrVec::~StrVec() {
 }
 
 void StrVec::push_back(const std::string & s) {
+    std::cout << " push_back(const std::string& s) called " << std::endl;
+
     chk_n_alloc();
     alloc.construct(first_free++, s);
+}
+
+
+void StrVec::push_back(std::string &&s) {
+    std::cout << " push_back(std::string&& s) called " << std::endl;
+
+    chk_n_alloc();
+    alloc.construct(first_free++, std::move(s));
 }
 
 void StrVec::free() {
@@ -53,26 +64,36 @@ std::pair<std::string *, std::string *> StrVec::alloc_n_copy(const std::string* 
 }
 
 void StrVec::reallocate() {
-
-    auto newcapaticy = size() ? 2 * size() : 1;
-    auto newdata = alloc.allocate(newcapaticy);  // allocate new raw memory
-
-    auto dest = newdata;    // point to the first free of new raw memory
-    auto elem = elements;   // point to the first place of old memory
-
-//    for (size_t i = 0; i != size(); ++i) {
-//        alloc.construct(dest++, std::move(*elem++));   // use the move constructor of elem
-//    }
-    for_each(dest, dest + size(), [this, &elem] (std::string& s) {
-        alloc.construct(&s, std::move(*elem++));
-    });
-
-    free();  // free old memory
-
-    elements = newdata;   // set pointers to new data memory
-    first_free = dest;
-    cap = elements + newcapaticy;
+    auto newcapacity = size() ? 2 * size() : 1;
+    auto first = alloc.allocate(newcapacity);
+    auto last = uninitialized_copy(make_move_iterator(begin()), make_move_iterator(end()), first);
+    free();
+    elements = first;
+    first_free = last;
+    cap = elements + newcapacity;
 }
+
+//void StrVec::reallocate() {
+//
+//    auto newcapaticy = size() ? 2 * size() : 1;
+//    auto newdata = alloc.allocate(newcapaticy);  // allocate new raw memory
+//
+//    auto dest = newdata;    // point to the first free of new raw memory
+//    auto elem = elements;   // point to the first place of old memory
+//
+////    for (size_t i = 0; i != size(); ++i) {
+////        alloc.construct(dest++, std::move(*elem++));   // use the move constructor of elem
+////    }
+//    for_each(dest, dest + size(), [this, &elem] (std::string& s) {
+//        alloc.construct(&s, std::move(*elem++));
+//    });
+//
+//    free();  // free old memory
+//
+//    elements = newdata;   // set pointers to new data memory
+//    first_free = dest;
+//    cap = elements + newcapaticy;
+//}
 
 void StrVec::resize(int newSize) {
     resize(newSize, "");
@@ -134,5 +155,20 @@ void StrVec::range_initialize(const std::string *begin, const std::string *end) 
     auto newData = alloc_n_copy(begin, end);
     elements = newData.first;
     first_free = cap = newData.second;
+}
+
+StrVec::StrVec(StrVec &&s) : elements(s.elements), first_free(s.first_free), cap(s.cap) {
+    s.elements = s.first_free = s.cap = nullptr;
+}
+
+StrVec &StrVec::operator=(StrVec &&rhs) noexcept {
+    if (this != &rhs) {
+        free();               // free old memory
+        elements = rhs.elements;
+        first_free = rhs.elements;
+        cap = rhs.cap;
+        rhs.elements = rhs.first_free = rhs.cap = nullptr;
+    }
+    return *this;
 }
 

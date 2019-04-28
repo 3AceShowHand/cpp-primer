@@ -21,9 +21,13 @@ class HasPtr {
 public:
 
     HasPtr(const std::string& s = std::string());
-    HasPtr(const HasPtr& rhs);
 
-    HasPtr& operator=(HasPtr rhs);
+    HasPtr(const HasPtr& rhs);
+    // HasPtr& operator=(HasPtr rhs);
+    HasPtr& operator=(HasPtr& rhs);
+
+    HasPtr(HasPtr&& p) noexcept;
+    HasPtr& operator=(HasPtr&& rhs) noexcept ;
 
     bool operator<(const HasPtr& rhs);
 
@@ -42,6 +46,5 @@ inline void swap(HasPtr& lhs, HasPtr& rhs) {
     swap(lhs.ps, rhs.ps);
     swap(lhs.i, rhs.i);
 }
-
 
 #endif //CPP_PRIMER_HASPTR_HPP

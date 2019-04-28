@@ -21,9 +21,14 @@ public:
 
     StrVec& operator=(const StrVec&);
 
+    StrVec(StrVec&& s);
+
+    StrVec& operator=(StrVec&& rhs) noexcept;
+
     ~StrVec();
 
     void push_back(const std::string&);
+    void push_back(std::string&& s);
 
     size_t size() const {
         return first_free - elements;
