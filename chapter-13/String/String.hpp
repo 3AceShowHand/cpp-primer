@@ -32,6 +32,14 @@ public:
     String(String&& s) noexcept;
     String& operator=(String&& rhs) noexcept ;
 
+    char& operator[](std::size_t n) {
+        return elements[n];
+    }
+
+    const char& operator[](std::size_t n) const {
+        return elements[n];
+    }
+
     ~String();
 
     const char* c_str() {

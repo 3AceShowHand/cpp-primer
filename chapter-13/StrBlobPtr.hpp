@@ -22,6 +22,22 @@ public:
         return p.curr != curr;
     }
 
+    StrBlobPtr& operator++();
+    StrBlobPtr& operator--();
+
+    StrBlobPtr& operator++(int);
+    StrBlobPtr& operator--(int);
+
+    std::string& operator*() const {
+        auto p = check(curr, "dereference past end");
+        return (*p)[curr];
+    }
+
+    std::string* operator->() const {
+        return &this->operator*();
+    }
+
+
 private:
     std::weak_ptr<std::vector<std::string>> wptr;
     size_type curr;

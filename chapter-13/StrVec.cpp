@@ -191,3 +191,11 @@ bool operator<=(const StrVec &lhs, const StrVec &rhs) {
 bool operator>=(const StrVec &lhs, const StrVec &rhs) {
     return !(lhs < rhs);
 }
+
+StrVec &StrVec::operator=(std::initializer_list<std::string> sl) {
+    auto data = alloc_n_copy(sl.begin(), sl.end());
+    free();
+    elements = data.first;
+    first_free = data.second;
+    return *this;
+}
