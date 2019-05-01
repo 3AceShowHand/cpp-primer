@@ -59,6 +59,14 @@ public:
         is >> *this;
 	}
 
+	explicit operator std::string() const {
+	    return this->bookNo;
+	}
+
+    explicit operator double() const {
+        return revenue;
+	}
+
 	Sales_data& operator=(const Sales_data& rhs);
 	
 	std::string isbn() const {
