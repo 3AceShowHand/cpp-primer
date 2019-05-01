@@ -29,6 +29,11 @@ public:
         return n * price;
     }
 
+    virtual void debug() const {
+        std::cout << "bookNo = " << bookNo << std::endl;
+        std::cout << "price = " << price << std::endl;
+    }
+
     virtual ~Quote() {
         std::cout << "~Quote()" << std::endl;
     }

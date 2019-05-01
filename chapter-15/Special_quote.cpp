@@ -5,10 +5,10 @@
 #include "Special_quote.hpp"
 
 double Special_quote::net_price(std::size_t n) const {
-    if (n <= threshold) {
+    if (n <= quantity) {
         return n * (1 - discount) * price;
     } else {
-        std::size_t remained = n - threshold;
-        return remained * price + threshold * (1 - discount) * price;
+        std::size_t remained = n - quantity;
+        return remained * price + quantity * (1 - discount) * price;
     }
 }

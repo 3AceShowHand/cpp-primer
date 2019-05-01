@@ -18,11 +18,9 @@ double print_total(ostream& os, const Quote& item, size_t n) {
 
 
 int main() {
-
-    Quote basic;
+    
     Bulk_quote bulk;
 
-    print_total(cout, basic, 20);
     print_total(cout, bulk, 20);
 
     return 0;
