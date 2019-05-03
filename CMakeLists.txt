@@ -135,5 +135,7 @@ add_executable(comparator_main chapter-14/comparator_main.cpp)
 add_executable(binops chapter-14/binops.cpp)
 add_executable(SmallInt chapter-14/conversion/SmallInt.cpp)
 add_executable(QuoteMain chapter-15/QuoteMain.cpp chapter-15/Quote.cpp chapter-15/Bulk_quote.cpp
-        chapter-15/Special_quote.cpp chapter-15/Disc_quote.cpp chapter-15/Disc_quote.hpp)
+        chapter-15/Special_quote.cpp chapter-15/Disc_quote.cpp)
 add_executable(ex15_13 chapter-15/ex15_13.cpp)
+add_executable(BasketMain chapter-15/BasketMain.cpp chapter-15/Basket.cpp
+        chapter-15/Quote.cpp chapter-15/Disc_quote.cpp chapter-15/Bulk_quote.cpp chapter-15/Special_quote.cpp)

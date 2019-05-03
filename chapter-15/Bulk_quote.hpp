@@ -53,6 +53,14 @@ public:
         std::cout << "~Bulk_quote()" << std::endl;
     }
 
+    Bulk_quote* clone() const & {
+        return new Bulk_quote(*this);
+    }
+
+    Bulk_quote* clone() && {
+        return new Bulk_quote(std::move(*this));
+    }
+
     virtual void debug() const override {
         Quote::debug();
         std::cout << "min_qty = " << quantity << std::endl;
