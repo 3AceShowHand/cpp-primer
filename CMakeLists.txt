@@ -141,4 +141,5 @@ add_executable(BasketMain chapter-15/BasketMain.cpp chapter-15/Basket.cpp
         chapter-15/Quote.cpp chapter-15/Disc_quote.cpp chapter-15/Bulk_quote.cpp chapter-15/Special_quote.cpp)
 add_executable(QueryMain chapter-15/TextQuery/QueryMain.cpp chapter-15/TextQuery/Query_base.cpp
         chapter-15/TextQuery/WordQuery.cpp chapter-15/TextQuery/NotQuery.cpp chapter-15/TextQuery/BinaryQuery.cpp
-        chapter-15/TextQuery/AndQuery.cpp chapter-15/TextQuery/OrQuery.cpp chapter-15/TextQuery/Query.cpp)
+        chapter-15/TextQuery/AndQuery.cpp chapter-15/TextQuery/OrQuery.cpp chapter-15/TextQuery/Query.cpp
+        chapter-15/TextQuery/TextQuery.cpp chapter-15/TextQuery/QueryResult.cpp)

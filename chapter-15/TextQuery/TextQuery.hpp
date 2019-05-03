@@ -1,18 +1,18 @@
 //
-// Created by king on 2019/4/26.
+// Created by king on 2019/5/4.
 //
 
 #ifndef CPP_PRIMER_TEXTQUERY_HPP
 #define CPP_PRIMER_TEXTQUERY_HPP
 
+
 #include <vector>
-#include <map>
 #include <string>
-#include <set>
 #include <memory>
+#include <map>
+#include <set>
 
 class QueryResult;
-
 class TextQuery {
 public:
     using line_no_t = std::vector<std::string>::size_type ;
@@ -25,5 +25,6 @@ private:
     std::map<std::string, std::shared_ptr<std::set<line_no_t>>> records;
 
 };
+
 
 #endif //CPP_PRIMER_TEXTQUERY_HPP
