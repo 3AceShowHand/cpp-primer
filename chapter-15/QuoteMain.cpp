@@ -6,8 +6,11 @@
 #include <iostream>
 #include "Quote.hpp"
 #include "Bulk_quote.hpp"
+#include "Special_quote.hpp"
+
 
 using namespace std;
+
 
 double print_total(ostream& os, const Quote& item, size_t n) {
     double ret = item.net_price(n);
@@ -16,12 +19,11 @@ double print_total(ostream& os, const Quote& item, size_t n) {
     return ret;
 }
 
-
 int main() {
-    
-    Bulk_quote bulk;
 
-    print_total(cout, bulk, 20);
+    Bulk_quote bq1;
+    Bulk_quote bq2("ss", 2.05, 12, 0.3);
+    bq2 = std::move(bq2);
 
     return 0;
 }

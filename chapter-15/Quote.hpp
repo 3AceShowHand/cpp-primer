@@ -21,6 +21,34 @@ public:
         std::cout << "Quote(const std::string& book, double sale_price)" << std::endl;
     }
 
+    Quote(const Quote& other):
+    bookNo(other.bookNo), price(other.price) {
+        std::cout << "Quote(const Quote& other)" << std::endl;
+    }
+
+    Quote& operator=(const Quote& other) {
+        if (this != &other) {
+            bookNo = other.bookNo;
+            price = other.price;
+        }
+        std::cout << "operator=(const Quote& other)" << std::endl;
+
+        return *this;
+    }
+
+    Quote(Quote&& other) noexcept: bookNo(std::move(other.bookNo)), price(std::move(other.price)) {
+        std::cout << "Quote(Quote&& other)" << std::endl;
+    }
+
+    Quote& operator=(Quote&& other) noexcept {
+        if (this != &other) {
+            bookNo = std::move(other.bookNo);
+            price = std::move(other.price);
+        }
+        std::cout << "operator=(Quote&& other)" << std::endl;
+        return *this;
+    }
+
     std::string isbn() const {
         return bookNo;
     }

@@ -20,6 +20,33 @@ public:
         std::cout << "Bulk_quote(const std::string& book, double p, std::size_t qty, double disc)" << std::endl;
     }
 
+    Bulk_quote(const Bulk_quote& other):
+    Disc_quote(other) {
+        std::cout << "Bulk_quote(const Bulk_quote& other)" << std::endl;
+    }
+
+    Bulk_quote& operator=(const Bulk_quote& other) {
+        if (this != &other) {
+            Disc_quote::operator=(other);
+            std::cout << "operator=(const Bulk_quote& other)" << std::endl;
+        }
+        return *this;
+    }
+
+    Bulk_quote(Bulk_quote&& other) noexcept :
+    Disc_quote(other) {
+        std::cout <<"Bulk_quote(Bulk_quote&& other)" << std::endl;
+    }
+
+    Bulk_quote& operator=(Bulk_quote&& other) noexcept {
+        if (this != &other) {
+            Disc_quote::operator=(other);
+        }
+        std::cout << "operator=(Bulk_quote&& other)" << std::endl;
+
+        return *this;
+    }
+
     double net_price(std::size_t n) const override ;
 
     ~Bulk_quote() {
