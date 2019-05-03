@@ -27,6 +27,15 @@ public:
         std::cout << "threshold = " << quantity << std::endl;
         std::cout << "discount = " << discount << std::endl;
     }
+
+    virtual Special_quote* clone() const & {
+        return new Special_quote(*this);
+    }
+
+    virtual Special_quote* clone() && {
+        return new Special_quote(std::move(*this));
+    }
+
 };
 
 
