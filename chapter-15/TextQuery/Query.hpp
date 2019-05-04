@@ -11,16 +11,21 @@
 #include "QueryResult.hpp"
 #include "TextQuery.hpp"
 #include "Query_base.hpp"
+#include "WordQuery.hpp"
 
 
 class Query {
+
     friend Query operator~(const Query& q);
     friend Query operator|(const Query& rhs, const Query& lhs);
     friend Query operator&(const Query& rhs, const Query& lhs);
 
     friend std::ostream& operator<<(std::ostream& os, const Query& query);
+
 public:
-    Query(const std::string& s);
+    explicit Query(const std::string& s): q(new WordQuery(s)) {
+
+    }
 
     QueryResult eval(const TextQuery& tq) const {
         return q->eval(tq);
