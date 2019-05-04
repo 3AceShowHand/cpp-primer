@@ -48,4 +48,6 @@ private:
 
 std::ostream& operator<<(std::ostream& os, const Query& query);
 
+
+
 #endif //CPP_PRIMER_QUERY_HPP

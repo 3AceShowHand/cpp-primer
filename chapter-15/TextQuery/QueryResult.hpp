@@ -13,7 +13,7 @@
 
 class QueryResult {
     using line_no_t = std::vector<std::string>::size_type ;
-    friend std::ostream& print(std::ostream&, const QueryResult&);
+    friend std::ostream& operator<<(std::ostream& os, const QueryResult& qr);
 
 public:
 
@@ -46,5 +46,11 @@ private:
     std::shared_ptr<std::set<line_no_t>> lines;
     std::shared_ptr<std::vector<std::string>> file;
 };
+
+std::ostream& operator<<(std::ostream& os, const QueryResult& qr);
+//inline std::ostream& operator<<(std::ostream& os, const QueryResult& qr) {
+//    os << qr.sought << "occurs" << qr.get_file()->size() << " " << "times" << "\n";
+//
+//}
 
 #endif //CPP_PRIMER_QUERYRESULT_HPP

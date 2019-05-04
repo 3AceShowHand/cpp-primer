@@ -7,26 +7,37 @@
 #include <iostream>
 #include "TextQuery.hpp"
 #include "QueryResult.hpp"
+#include "Query.hpp"
+#include "NotQuery.hpp"
+#include "OrQuery.hpp"
+#include "AndQuery.hpp"
 
-
-void runQueries(std::ifstream &infile) {
-    TextQuery tq(infile);
-    while (true) {
-        std::cout << "Enter word to look for, or 'q' to exit: ";
-        std::string s;
-        if (!(std::cin >> s) || s == "q")
-            break;
-        print(std::cout, tq.query(s)) << std::endl;
-    }
-}
 
 int main() {
     std::string filename("../data/query_text.txt");
     std::ifstream in(filename);
-    if (!in.is_open()) {
-        std::cerr << "Cannot open file: " << filename << std::endl;
-        return -1;
-    }
-    runQueries(in);
+    TextQuery tq(in);
+
+    Query q1("Alice");
+    Query q2("Daddy");
+    Query q3("her");
+    Query q4("bird");
+
+    Query nq = ~q1;
+    Query aq = q1 & q3;
+    Query oq = q2 | q4;
+    Query qq = nq & oq | aq;
+
+    std::cout << q1.eval(tq) << std::endl;
+    std::cout << q2.eval(tq) << std::endl;
+    std::cout << q3.eval(tq) << std::endl;
+    std::cout << q4.eval(tq) << std::endl;
+
+    std::cout << nq.eval(tq) << std::endl;
+    std::cout << aq.eval(tq) << std::endl;
+    std::cout << oq.eval(tq) << std::endl;
+    std::cout << qq.eval(tq) << std::endl;
+
+
     return 0;
 }
