@@ -12,6 +12,7 @@ using namespace std;
 
 
 TextQuery::TextQuery(std::ifstream &infile):lines(new vector<string>) {
+    std::cout << "TextQuery::TextQuery(std::ifstream &infile)" << std::endl;
     string text;
     while (getline(infile, text)) {
         lines->push_back(text);
@@ -29,6 +30,8 @@ TextQuery::TextQuery(std::ifstream &infile):lines(new vector<string>) {
 }
 
 QueryResult TextQuery::query(const std::string &sought) const {
+    std::cout << "TextQuery::query(const std::string &sought)" << std::endl;
+
     static shared_ptr<set<line_no_t>> nodata(new set<line_no_t>);
     auto loc = records.find(sought);
     if (loc == records.end()) {

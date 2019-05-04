@@ -4,18 +4,7 @@
 
 #include "Query.hpp"
 
-Query operator~(const Query &q) {
-    return Query(__cxx11::basic_string());
-}
-
-Query operator|(const Query &rhs, const Query &lhs) {
-    return Query(__cxx11::basic_string());
-}
-
-Query operator&(const Query &rhs, const Query &lhs) {
-    return Query(__cxx11::basic_string());
-}
-
 std::ostream &operator<<(std::ostream &os, const Query &query) {
+    std::cout << "std::ostream& operator<<(std::ostream& os, const Query& query)" << std::endl;
     return os << query.rep();
 }

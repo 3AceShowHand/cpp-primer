@@ -12,7 +12,7 @@ class OrQuery : public BinaryQuery {
     friend Query operator|(const Query& lhs, const Query& rhs);
     OrQuery(const Query& lhs, const Query& rhs):
     BinaryQuery(lhs, rhs, "|") {
-
+        std::cout << "OrQuery::OrQuery(const Query& lhs, const Query& rhs)" << std::endl;
     }
 
     QueryResult eval(const TextQuery& tq) const override;
@@ -20,8 +20,10 @@ class OrQuery : public BinaryQuery {
 };
 
 inline Query operator|(const Query& lhs, const Query& rhs) {
+    std::cout << "OrQuery::operator|(const Query& lhs, const Query& rhs)" << std::endl;
     return std::shared_ptr<Query_base>(new OrQuery(lhs, rhs));
 }
+
 
 
 #endif //CPP_PRIMER_ORQUERY_HPP
