@@ -9,7 +9,6 @@
 #include <vector>
 #include <iostream>
 
-
 template <class> class BlobPtr;
 
 template <class T>
@@ -21,7 +20,11 @@ public:
     using size_type = typename std::vector<T>::size_type ;
 
     Blob();
+
     Blob(std::initializer_list<value_type> il);
+
+    template <class It>
+    Blob(It b, It e);
 
     size_type size() const {
         return data->size();
@@ -41,7 +44,6 @@ public:
 
     BlobPtr<T> begin();
     BlobPtr<T> end();
-
 
     void pop_back();
 
@@ -113,6 +115,12 @@ BlobPtr<T> Blob<T>::begin() {
 template<class T>
 BlobPtr<T> Blob<T>::end() {
     return BlobPtr<T>(*this, size());
+}
+
+template<class T>
+template<class It>
+Blob<T>::Blob(It b, It e):data(std::make_shared<std::vector<T>>(b, e)) {
+
 }
 
 #endif //CPP_PRIMER_BLOB_HPP

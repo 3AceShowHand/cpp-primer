@@ -15,10 +15,17 @@ int compare(const char(&p1)[N], const char(&p2)[M]) {
     return strcmp(p1, p2);
 }
 
-template <typename T>
-int compare(const T& v1, const T& v2) {
-    if (less<T>()(v1, v2)) return -1;
-    if (less<T>()(v2, v1)) return 1;
+//template <typename T>
+//int compare(const T& v1, const T& v2) {
+//    if (less<T>()(v1, v2)) return -1;
+//    if (less<T>()(v2, v1)) return 1;
+//    return 0;
+//}
+
+template <typename T, typename F=less<T>>
+int compare(const T& v1, const T& v2, F f = F()) {
+    if (f(v1, v2)) return -1;
+    if (f(v2, v1)) return 1;
     return 0;
 }
 
