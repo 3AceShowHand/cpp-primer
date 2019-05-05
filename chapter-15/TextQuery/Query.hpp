@@ -7,9 +7,8 @@
 
 #include <string>
 #include <iostream>
+#include <memory>
 
-#include "QueryResult.hpp"
-#include "TextQuery.hpp"
 #include "Query_base.hpp"
 #include "WordQuery.hpp"
 
@@ -43,7 +42,6 @@ private:
     }
 
     std::shared_ptr<Query_base> q;
-
 };
 
 std::ostream& operator<<(std::ostream& os, const Query& query);

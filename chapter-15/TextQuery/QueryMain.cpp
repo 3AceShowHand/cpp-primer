@@ -2,7 +2,6 @@
 // Created by king on 2019/5/3.
 //
 
-
 #include <fstream>
 #include <iostream>
 #include "TextQuery.hpp"
@@ -11,7 +10,6 @@
 #include "NotQuery.hpp"
 #include "OrQuery.hpp"
 #include "AndQuery.hpp"
-
 
 int main() {
     std::string filename("../data/query_text.txt");

@@ -143,3 +143,10 @@ add_executable(QueryMain chapter-15/TextQuery/QueryMain.cpp chapter-15/TextQuery
         chapter-15/TextQuery/WordQuery.cpp chapter-15/TextQuery/NotQuery.cpp chapter-15/TextQuery/BinaryQuery.cpp
         chapter-15/TextQuery/AndQuery.cpp chapter-15/TextQuery/OrQuery.cpp chapter-15/TextQuery/Query.cpp
         chapter-15/TextQuery/TextQuery.cpp chapter-15/TextQuery/QueryResult.cpp)
+
+add_executable(chapter16-main chapter-16/chapter16-main.cpp)
+add_executable(ex16_4_find chapter-16/ex16_4_find.cpp)
+add_executable(ex16_5_print chapter-16/ex16_5_print.cpp)
+add_executable(ex_16_6_begin_end chapter-16/ex_16_6_begin_end.cpp)
+add_executable(ex_16_7_constexpr chapter-16/ex_16_7_constexpr.cpp)
+add_executable(BlobMain chapter-16/BlobMain.cpp chapter-16/Blob.cpp)
