@@ -5,7 +5,9 @@
 #ifndef CPP_PRIMER_Shared_ptr_HPP
 #define CPP_PRIMER_Shared_ptr_HPP
 
-#include <cstddef>
+/* This is a simple implementation of shared_ptr,
+ * only some method implemented, just a toy.
+*/
 #include <iostream>
 
 template <class T>
