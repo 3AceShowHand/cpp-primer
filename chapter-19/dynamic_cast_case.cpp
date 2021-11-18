@@ -8,17 +8,15 @@ using namespace std;
 
 class Base {
 
-public:
+  public:
     virtual void foo() {
         cout << "Base::foo()" << endl;
     }
-
 };
 
+class Derived : public Base {
 
-class Derived: public Base {
-
-public:
+  public:
     void foo() override {
         cout << "Derived::foo()" << endl;
     }
@@ -30,14 +28,14 @@ void func() {
     if (Derived* dp = dynamic_cast<Derived*>(bp)) {
         std::cout << "dynamic_cast<Derived*> succeed." << std::endl;
     } else {
-        std::cout <<" dynamic_cast failed." << std::endl;
+        std::cout << " dynamic_cast failed." << std::endl;
     }
 
     Base* bp2 = new Base;
     if (Derived* dp2 = dynamic_cast<Derived*>(bp2)) {
         std::cout << "dynamic_cast<Derived*> succeed." << std::endl;
     } else {
-        std::cout <<"dynamic_cast failed." << std::endl;
+        std::cout << "dynamic_cast failed." << std::endl;
     }
     delete bp2;
 }
@@ -50,7 +48,6 @@ void func2(const Base& b) {
         cout << "dynamic_cast<const Derived&>(b) failed" << endl;
     }
 }
-
 
 int main() {
 

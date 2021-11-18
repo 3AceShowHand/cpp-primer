@@ -5,16 +5,15 @@
 #ifndef CPP_PRIMER_BASKET_HPP
 #define CPP_PRIMER_BASKET_HPP
 
+#include "Quote.hpp"
 #include <memory>
 #include <set>
-#include "Quote.hpp"
 
 class Basket {
 
-public:
-
+  public:
     Basket() {
-        std::cout <<"Basket()" << std::endl;
+        std::cout << "Basket()" << std::endl;
     }
 
     void add_item(const std::shared_ptr<Quote>& sale);
@@ -24,12 +23,13 @@ public:
 
     double total_receipt(std::ostream& os) const;
 
-private:
-    static bool compare(const std::shared_ptr<Quote>& lhs, const std::shared_ptr<Quote>& rhs) {
+  private:
+    static bool compare(const std::shared_ptr<Quote>& lhs,
+                        const std::shared_ptr<Quote>& rhs) {
         return lhs->isbn() < rhs->isbn();
     }
 
     std::multiset<std::shared_ptr<Quote>, decltype(compare)*> items{compare};
 };
 
-#endif //CPP_PRIMER_BASKET_HPP
+#endif // CPP_PRIMER_BASKET_HPP

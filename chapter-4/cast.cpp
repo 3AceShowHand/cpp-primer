@@ -7,10 +7,10 @@
 void static_cast_case() {
     int i = 3;
     int j = 5;
-    double slope = static_cast<double>(j) / i;   // static_cast<target_type>(input value)
+    double slope = static_cast<double>(j) / i;
 
     void* p = &slope;
-    double *dp = static_cast<double*>(p);
+    double* dp = static_cast<double*>(p);
 }
 
 void const_cast_case() {
@@ -22,7 +22,6 @@ void reinterpret_cast_case() {
     int* ip;
     char* pc = reinterpret_cast<char*>(ip);
 }
-
 
 int main() {
 

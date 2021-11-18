@@ -2,35 +2,34 @@
 // Created by king on 2019/4/28.
 //
 
-#include <cstring>
-#include <algorithm>
-#include <iostream>
 #include "String.hpp"
+#include <algorithm>
+#include <cstring>
+#include <iostream>
 
 std::allocator<char> String::alloc;
 
-std::pair<char *, char *> String::alloc_n_copy(const char *b, const char *e) {
+std::pair<char*, char*> String::alloc_n_copy(const char* b, const char* e) {
     auto str = alloc.allocate(e - b);
     return {str, std::uninitialized_copy(b, e, str)};
 }
 
 void String::free() {
     if (elements) {
-        std::for_each(elements, first_free, [this](char &c) {
-            alloc.destroy(&c);
-        });
+        std::for_each(elements, first_free,
+                      [this](char& c) { alloc.destroy(&c); });
         alloc.deallocate(elements, first_free - elements);
     }
 }
 
-String::String(const char *cstr) {
+String::String(const char* cstr) {
     char* end = const_cast<char*>(cstr) + strlen(cstr);
     auto newstr = alloc_n_copy(cstr, end);
     elements = newstr.first;
     first_free = newstr.second;
 }
 
-String::String(const String &that) {
+String::String(const String& that) {
     std::cout << " String(const String& that) called " << std::endl;
 
     auto newstr = alloc_n_copy(that.begin(), that.end());
@@ -38,7 +37,7 @@ String::String(const String &that) {
     first_free = newstr.second;
 }
 
-String &String::operator=(const String &that) {
+String& String::operator=(const String& that) {
     std::cout << " operator=(const String& that) called " << std::endl;
 
     auto newstr = alloc_n_copy(that.begin(), that.end());
@@ -53,12 +52,14 @@ String::~String() {
     free();
 }
 
-String::String(String &&s) noexcept :elements(s.elements), first_free(s.first_free) {
+String::String(String&& s) noexcept
+    : elements(s.elements)
+    , first_free(s.first_free) {
     std::cout << "String(String &&s) called " << std::endl;
     s.elements = s.first_free = nullptr;
 }
 
-String &String::operator=(String&& rhs) noexcept {
+String& String::operator=(String&& rhs) noexcept {
     std::cout << " operator=(String&& rhs) called " << std::endl;
 
     if (this != &rhs) {
@@ -71,32 +72,33 @@ String &String::operator=(String&& rhs) noexcept {
     return *this;
 }
 
-std::ostream &operator<<(std::ostream &os, const String &s) {
+std::ostream& operator<<(std::ostream& os, const String& s) {
     os << s.elements << std::endl;
     return os;
 }
 
-bool operator==(const String &lhs, const String &rhs) {
-    return  (lhs.size() == rhs.size()) && std::equal(lhs.begin(), lhs.end(), rhs.begin());
+bool operator==(const String& lhs, const String& rhs) {
+    return (lhs.size() == rhs.size()) &&
+           std::equal(lhs.begin(), lhs.end(), rhs.begin());
 }
 
-bool operator!=(const String &lhs, const String &rhs) {
+bool operator!=(const String& lhs, const String& rhs) {
     return !(lhs == rhs);
 }
 
-bool operator<(const String &lhs, const String &rhs) {
-    return std::lexicographical_compare(lhs.begin(), lhs.end(), rhs.begin(), rhs.end());
+bool operator<(const String& lhs, const String& rhs) {
+    return std::lexicographical_compare(lhs.begin(), lhs.end(), rhs.begin(),
+                                        rhs.end());
 }
 
-bool operator>(const String &lhs, const String &rhs) {
+bool operator>(const String& lhs, const String& rhs) {
     return lhs < lhs;
 }
 
-bool operator<=(const String &lhs, const String &rhs) {
+bool operator<=(const String& lhs, const String& rhs) {
     return !(lhs > rhs);
 }
 
-bool operator>=(const String &lhs, const String &rhs) {
+bool operator>=(const String& lhs, const String& rhs) {
     return !(lhs < rhs);
 }
-
